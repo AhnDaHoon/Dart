@@ -1,4 +1,53 @@
 # Dart
+## 변수
+``` dart
+void main() {
+
+  // var는 타입을 재할당이 불가능하다.
+  var name = 'var test';
+  print(name); // 출력 var test;
+
+  name = 123; // 에러 발생
+
+  // dynamic은 타입을 재할당 할 수 있다.
+  dynamic name2 = 'var test';
+  print(name2); // 출력 var test;
+
+  name2 = 123; // name에 123 입력
+  print(name2); // 123
+}
+```
+
+## nullable, non-nullable
+``` dart
+void main() {
+
+  // nullable - null이 될 수 있다.
+  // non-nullable - null이 될 수 없다.
+  
+  // dart의 기본 변수는 널이 들어갈 수 없다.
+  String name = "aa";
+  name = null; // 에러 발생
+  
+  // 타입에 ?를 명시해주면 널을 넣을 수 있다.
+  String? name2 = "aa";
+  name2 = null; // 성공
+}
+```
+
+## final과 const
+``` dart
+void main() {
+
+  // const는 빌드 타임에 값을 몰라도 된다.
+  final DateTime now = DateTime.now(); 
+  
+  // const는 빌드 타임에 값을 알고 있어야 한다.
+  // DateTime.now()은 어떤 값이 들어올지 빌드 타임에는 값을 알지 못하기 때문에 사용이 불가능하다.
+  const DateTime now2 = DateTime.now(); 
+}
+
+```
 
 ## 함수
 ``` dart
