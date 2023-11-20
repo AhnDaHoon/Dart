@@ -25,11 +25,11 @@ void main() {
   // nullable - null이 될 수 있다.
   // non-nullable - null이 될 수 없다.
   
-  // dart의 기본 변수는 널이 들어갈 수 없다.
+  // dart의 기본 변수는 null이 들어갈 수 없다.
   String name = "aa";
   name = null; // 에러 발생
   
-  // 타입에 ?를 명시해주면 널을 넣을 수 있다.
+  // 타입에 ?를 명시해주면 null을 넣을 수 있다.
   String? name2 = "aa";
   name2 = null; // 성공
 }
