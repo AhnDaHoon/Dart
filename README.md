@@ -107,3 +107,77 @@ int calculate(int x, int y, int z, Operation operation){
 }
 
 ```
+
+## 클래스
+``` dart
+void main() {
+  Idol bts = Idol.fromList([
+    ['RM', '진', '슈가', '제이홉', '지민', '뷔', '정국'],
+    'BTS',
+  ]);
+  bts.sayHello();
+
+  Idol blackPink = Idol(
+    '블랙핑크',
+    ['지수', '제니', '리사', '로제'],
+  );
+
+  Idol2 blackPink2 = const Idol2(
+    '블랙핑크',
+    ['지수', '제니', '리사', '로제'],
+  );
+
+  print(blackPink == blackPink2); // false
+
+  Idol2 blackPink3 = const Idol2(
+    '블랙핑크',
+    ['지수', '제니', '리사', '로제'],
+  );
+
+  // const를 붙여서 생성한 객체들은 같은 값을 가지고 있으면 같은 인스턴스로 본다.
+  print(blackPink2 == blackPink3); // true
+
+  // getter
+  print(blackPink.firstMember);
+
+  // setter
+  blackPink.firstMember = 'ASAS';
+  print(blackPink.firstMember);
+}
+
+class Idol {
+  String name;
+  List<String> members;
+
+  Idol(this.name, this.members);
+
+  Idol.fromList(List values)
+      : this.members = values[0],
+        this.name = values[1];
+
+  void sayHello() {
+    print('${this.name} 입니다. 멤버는 ${this.members}가 있습니다.');
+  }
+
+  // getter
+  String get firstMember {
+    return this.members[0];
+  }
+
+  // setter
+  set firstMember(String name) {
+    this.members[0] = name;
+  }
+}
+
+class Idol2 {
+  final String name;
+  final List<String> members;
+
+  const Idol2(this.name, this.members);
+
+  void sayHello() {
+    print('${this.name} 입니다. 멤버는 ${this.members}가 있습니다.');
+  }
+}
+```
