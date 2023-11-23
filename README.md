@@ -226,3 +226,74 @@ class Lecture<T, X> {
   }
 }
 ```
+
+## Iterable타입 형변환
+``` dart
+void main() {
+  List<String> blackPink = ['로제', '지수', '리사', '제니', '제니'];
+  print(blackPink.asMap());
+  print(blackPink.toSet());
+  
+  Map blackPinkMap = blackPink.asMap();
+  print(blackPinkMap.keys);
+  print(blackPinkMap.values);
+  
+  Set blackPinkSet = Set.from(blackPink);
+  print(blackPinkSet.toList());
+}
+```
+
+## 함수형 프로그래밍
+### List
+``` dart
+void main() {
+  List<String> blackPink = ['로제', '지수', '리사', '제니'];
+  print(blackPink);
+  
+  final newBlackPink = blackPink.map((x){
+    return '블랙핑크 $x';
+  });
+  print(newBlackPink);
+  
+  final newBlackPink2 = blackPink.map((x) =>  '블랙핑크 $x');
+  print(newBlackPink2);
+  
+  print(blackPink == blackPink); // true
+  print(blackPink == newBlackPink); // false 
+  
+  // final 키워드를 붙였고 같은 값이지만 false를 리턴한다.
+  // 이유는 map()을 쓰면은 새로운 객체를 생성하기 때문이다.
+  print(newBlackPink == newBlackPink2); // false
+  
+  // [1.jpg, 3.jpg, 5.jpg, 7.jpg, 9.jpg]
+  String number = '13579';
+  
+  final parsed = number.split('').map((x) => '$x.jpg').toList();
+  print(parsed);
+}
+```
+
+### Map
+``` dart
+void main() {
+  Map<String, String> harryPotter = {
+    'Harry Potter': '해리포터',
+    'Ron weasley': '론 위즐리',
+    'Hermione Granger': '헤르미온느 그레인저'
+  };
+  print(harryPotter);
+
+  final result = harryPotter.map(
+    (key, value) => MapEntry(
+        'Harry Potter Character $key',
+        '해리포터 캐릭터 $value',
+      ),
+  );
+  print(result);
+  
+  final keys = harryPotter.keys.map((x) => 'HPC $x').toList();   
+  final values = harryPotter.keys.map((x) => '해리포터  $x').toList();
+  print(keys);
+  print(values);
+}
+```
