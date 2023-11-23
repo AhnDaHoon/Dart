@@ -181,3 +181,23 @@ class Idol2 {
   }
 }
 ```
+
+## 인터페이스
+``` dart
+// dart는 인터페이스를 생성할 때도 class를 사용한다.
+class IdolInterace{
+  String name;
+  
+  IdolInterace(this.name);
+    
+  void sayName(){}
+}
+
+class BoyGroup implements IdolInterace{
+  String name;
+  
+  BoyGroup(this.name);
+  
+  void sayName(){}
+}
+```
