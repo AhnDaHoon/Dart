@@ -185,6 +185,8 @@ class Idol2 {
 ## 인터페이스
 ``` dart
 // dart는 인터페이스를 생성할 때도 class를 사용한다.
+// 하지만 class로만 생성하면 인스턴스화로 생성할 수 있다.
+// 인스턴스로 생성 못하게 하려면 abstract키워드를 붙이면 된다.
 class IdolInterace{
   String name;
   
