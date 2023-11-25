@@ -315,3 +315,72 @@ void main() {
 }
 ```
 
+### reduce
+``` dart
+void main() {
+  List<int> numbers = [1, 3, 4, 7, 9];
+  
+  // prev 첫번 째 실행인 경우 첫번 쨰 값
+  // prev 첫번 째 실행이 아닌 경우 이전에서 리턴한 값
+  // next 다음 값
+  // reduce는 리턴하는 값이 멤버 변수와 같은 타입이여야 한다.
+  final result = numbers.reduce((prev, next){
+    print('==========================');
+    print('previous: $prev');
+    print('next: $next');
+    print('total: ${prev + next}');
+    
+    return prev + next;
+  });
+  
+  print(result);
+}
+```
+
+### fold
+``` dart
+void main() {
+  List<int> numbers = [1, 3, 4, 7, 9];
+  int firstNumber = 0;
+
+  // firstNumber 첫번 째 실행일 떄 넘기는 값
+  // prev 첫번 째 실행이 아닌 경우 이전에서 리턴한 값
+  // next 다음 값
+  final sum = numbers.fold<int>(firstNumber, (prev, next) {
+    print('==========================');
+    print('previous: $prev');
+    print('next: $next');
+    print('total: ${prev + next}');
+
+    return prev + next;
+  });
+
+  print(sum);
+  
+  // fold는 reduce와 다르게 리턴값을 멤버변수와 다르게 리턴할 수 있다.
+  List<String> words = [
+    'a',
+    'b',
+    'cc',
+  ];
+  
+  final sentence = words.fold<String>('', (prev, next) => prev + next);
+  print(sentence);
+  
+  final count = words.fold<int>(0, (prev, next) => prev + next.length);
+  print(count);
+}
+```
+
+### cascading operator
+``` dart
+void main() {
+  List<int> even = [2, 4, 6, 8];
+  List<int> odd = [1, 3, 5, 7];
+  
+  // cascading operator
+  print([...even, ...odd]); // [2, 4, 6, 8, 1, 3, 5, 7]
+  print(even == [...even]); // false (cascading operator를 사용하면 새로운 객체를 생성하기 때문에 다른 객체로 나온다.)
+}
+
+```
