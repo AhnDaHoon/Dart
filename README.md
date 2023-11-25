@@ -244,7 +244,9 @@ void main() {
 ```
 
 ## 함수형 프로그래밍
-### List
+### Collection
+
+#### List
 ``` dart
 void main() {
   List<String> blackPink = ['로제', '지수', '리사', '제니'];
@@ -273,7 +275,7 @@ void main() {
 }
 ```
 
-### Map
+#### Map
 ``` dart
 void main() {
   Map<String, String> harryPotter = {
@@ -297,3 +299,19 @@ void main() {
   print(values);
 }
 ```
+
+#### Set
+``` dart
+void main() {
+  Set blackPinkSet = {
+    '로제',
+    '지수',
+    '제니',
+    '리사'
+  };
+  
+  final newSet = blackPinkSet.map((x) => '블랙핑크 $x').toSet();
+  print(newSet);
+}
+```
+
