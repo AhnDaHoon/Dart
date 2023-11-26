@@ -384,3 +384,89 @@ void main() {
 }
 
 ```
+
+## Async Programming 비동기 프로그래밍
+
+### Future, Future.delayed
+``` dart
+void main() {
+  // Future
+  // 미래에 받아올 값
+  Future<String> name = Future.value('코드');
+  
+  addNumbers(1, 1);
+  addNumbers(2, 2);
+  // 위에 두개 함수 실행 시
+  // 계산 시작 : 1 + 1
+  // 함수 완료
+  // 계산 시작 : 2 + 2
+  // 함수 완료
+  // 계산 완료: 1 + 1 = 2
+  // 계산 완료: 2 + 2 = 4
+}
+
+void addNumbers(int n1, int n2){
+  print('계산 시작 : $n1 + $n2'); // 첫번째 실행
+  
+  // delayed
+  // 1번 파라미터: 지연할 기간 (얼마나 지연할건지) Duration
+  // 2번 파라미터: 지연 시간이 지난 후 실행할 함수 
+  Future.delayed(Duration(seconds: 2), (){
+    print('계산 완료: $n1 + $n2 = ${n1 + n2}'); // 세번째 실행
+  });
+  
+  print('함수 완료'); // 두번째 실행
+}
+
+```
+
+### async, await
+``` dart
+void main() async {
+  await addNumbers2(1, 1);
+  await addNumbers2(2, 2);
+  // 위에 두개 함수 실행 시
+  // 계산 시작 : 1 + 1
+  // 계산 완료: 1 + 1 = 2
+  // 함수 완료
+  // 계산 시작 : 2 + 2
+  // 계산 완료: 2 + 2 = 4
+  // 함수 완료
+}
+
+// await
+Future<void> addNumbers2(int n1, int n2) async {
+  print('계산 시작 : $n1 + $n2'); // 첫번째 실행
+  
+  await Future.delayed(Duration(seconds: 2), (){
+    print('계산 완료: $n1 + $n2 = ${n1 + n2}'); // 두번째 실행
+  });
+  
+  print('함수 완료'); // 세번째 실행 
+}
+```
+
+### Future로 리턴값 받기
+``` dart
+void main() async {  
+  final result1 = await addNumbers(1, 1);
+  final result2 = await addNumbers(2, 2);
+  
+  print('result1: $result1');
+  print('result2: $result2');
+  print('result1 + result2: ${result1 + result2}');
+}
+
+// 값을 리턴 하려면 async키워드가 들어가 있어야 한다.
+Future<int> addNumbers(int n1, int n2) async {
+  print('계산 시작 : $n1 + $n2'); // 첫번째 실행
+
+  await Future.delayed(Duration(seconds: 2), (){
+    print('계산 완료: $n1 + $n2 = ${n1 + n2}'); // 세번째 실행
+  });
+  
+  print('함수 완료'); // 두번째 실행
+  
+  return n1 + n2;
+}
+```
