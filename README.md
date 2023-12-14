@@ -39,7 +39,7 @@ void main() {
 ``` dart
 void main() {
 
-  // const는 빌드 타임에 값을 몰라도 된다.
+  // final은 빌드 타임에 값을 몰라도 된다.
   final DateTime now = DateTime.now(); 
   
   // const는 빌드 타임에 값을 알고 있어야 한다.
